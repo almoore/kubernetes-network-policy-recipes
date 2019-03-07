@@ -1,4 +1,4 @@
-# DENY all non-whitelisted traffic to a namespace
+  # DENY all non-whitelisted traffic to a namespace
 
 💡 **Use Case:** This is a fundamental policy, blocking all cross-pod networking other
 than the ones whitelisted via the other Network Policies you deploy.
@@ -30,11 +30,12 @@ Note a few things about this manifest:
 
 - `namespace: default` deploy this policy to the `default` namespace.
 - `podSelector:` is empty, this means it will match all the pods. Therefore,
-  the policy will be enforced to ALL pods in the `default` namespace .
+  the policy will be enforced to ALL pods in the `default` namespace.
 - There are no `ingress` rules specified. This causes incoming traffic to be
   dropped to the selected (=all) pods.
   - In this case, you can just omit the `ingress` field, or leave it empty
     like `ingess:`
+- There is no `egres` rules and so they are allowed.
 
 Save this manifest to `default-deny-all.yaml` and apply:
 
